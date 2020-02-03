@@ -46,8 +46,12 @@ class CourseGridCardComponent extends React.Component{
                 {!this.state.active &&
                     <div className="card">
                         <img src={CoursePage} className="card-img-top border" alt="..."/>
-                        <div className="card-body fixed border">
-                            <h6 className="card-title text-truncate wbdv-course-title">{this.props.course.title}</h6>
+                        <div className="card-body border">
+                            <a href="/course" onClick={event => event.stopPropagation()}>
+                                <h6 className="wbdv-course-title card-title text-truncate">
+                                    {this.props.course.title}
+                                </h6>
+                            </a>
                             <div className="card-text wbdv-grid-date">Last Modified {this.props.course.dateModified}</div>
                         </div>
                     </div>

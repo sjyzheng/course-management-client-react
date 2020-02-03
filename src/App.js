@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import {BrowserRouter as Router, Link, Route}
+    from 'react-router-dom'
+import './styles/CourseList.style.client.css'
+import CourseManagerContainer from "./containers/CourseManagerContainer";
+import CourseEditorComponent from "./components/CourseEditorComponent"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => (
+
+    <Router>
+        <div className="Page">
+            <Route path="/" component={CourseManagerContainer} exact/>
+            <Route path="/course" component={CourseEditorComponent}/>
+        </div>
+    </Router>
+    )
 
 export default App;

@@ -8,7 +8,7 @@ const LessonTabsComponent = () => (
                 CS5610 - WebDev</i>
         </div>
 
-        <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div className="collapse navbar-collapse justify-content-center" >
             <div className="navbar-nav list-group list-group-horizontal col-10">
                 <i className="nav-item list-group-item list-group-item-action list-group-item-light border-0 font-weight-bold bg-dark active px-4 text-center wbdv-page-tab"
                     > Lesson 1</i>

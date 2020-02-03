@@ -1,0 +1,29 @@
+.wbdv-grid-date{
+    font-size: small;
+}
+
+.wbdv-course-title{
+    color: black;
+}
+
+.wbdv-course-title:hover{
+    font-weight: bolder;
+    font-size: medium;
+}
+
+.wbdv-grid-edit-course{
+    color: dodgerblue;
+}
+
+.wbdv-grid-save-name{
+    color: red;
+}
+
+.wbdv-add-course {
+    color: red;
+}
+
+.wbdv-course-manager {
+    font-weight: bold;
+    font-style: normal;
+}

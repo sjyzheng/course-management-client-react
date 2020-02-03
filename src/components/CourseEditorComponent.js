@@ -4,11 +4,16 @@ import LessonTabsComponent from "./LessonTabsComponent";
 import ModuleListComponent from "./ModuleListComponent";
 import TopicPillsComponent from "./TopicPillsComponent";
 import WidgetListComponent from "./WidgeListComponent";
+import CourseEditorDropdownsComponent from "./CourseEditorDropdownsComponent";
 
 const CourseEditorComponent = () => (
     <div>
         <div className="container-fluid p-0">
             <LessonTabsComponent/>
+        </div>
+
+        <div className="container-fluid p-0">
+            <CourseEditorDropdownsComponent/>
         </div>
 
         <div className="container-fluid p-0">

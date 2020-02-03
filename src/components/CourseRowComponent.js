@@ -78,14 +78,15 @@ class CourseRowComponent extends React.Component {
                     }
 
                     {this.state.active && this.state.editing &&
-                        <div>
-                            <input type="search"
+                        <div className="form-row">
+                            <input className="wbdv-course-editFld form-control col-8"
+                                   type="search"
                                    value={this.state.courseName}
                                    placeholder="Enter a New Title"
                                    onClick={(e) => {
                                        e.stopPropagation()}}
                                    onChange={this.updateForm}/>
-                            <i className="fas fa-check fa-lg float-right mt-2 mx-3"
+                            <i className="fas fa-check fa-lg text-right mt-2 mx-3 col"
                                onClick={(e) => {
                                    e.stopPropagation();
                                    this.saveCourse(this.props.course)}}>

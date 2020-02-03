@@ -78,6 +78,9 @@ class CourseManagerContainer extends React.Component {
     }
 
     updateCourse = (course) => {
+        this.date = new Date();
+        course.dateModified =  this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear();
+        console.log(course);
         courseService.updateCourse(course._id, course)
             .then(() => {
                 courseService.findAllCourses()

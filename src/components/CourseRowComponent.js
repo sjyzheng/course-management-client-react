@@ -25,12 +25,15 @@ class CourseRowComponent extends React.Component {
     }
 
     saveCourse = (course) =>{
-        this.state.courseName === ''? alert('Please Enter a Valid Course Title!'):
+        if (this.state.courseName === '') {
+            alert('Please Enter a Valid Course Title!');
+        } else {
             this.setState(prevState => ({
-            editing: !prevState.editing
-        }));
-        course.title=this.state.courseName;
-        this.props.updateCourse(course)
+                editing: !prevState.editing
+            }));
+            course.title=this.state.courseName;
+            this.props.updateCourse(course)
+        }
     }
 
     updateForm = (e) => {
@@ -86,11 +89,13 @@ class CourseRowComponent extends React.Component {
                                    onClick={(e) => {
                                        e.stopPropagation()}}
                                    onChange={this.updateForm}/>
-                            <i className="fas fa-check fa-lg text-right mt-2 mx-3 col"
-                               onClick={(e) => {
-                                   e.stopPropagation();
-                                   this.saveCourse(this.props.course)}}>
-                            </i>
+                            <div className="col text-right">
+                                <i className="fas fa-check fa-lg mt-2 mx-3"
+                                   onClick={(e) => {
+                                       e.stopPropagation();
+                                       this.saveCourse(this.props.course)}}>
+                                </i>
+                            </div>
                         </div>
                     }
                 </li>

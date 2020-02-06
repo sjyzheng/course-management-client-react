@@ -26,7 +26,8 @@ class CourseGridCardComponent extends React.Component{
     }
 
     saveCourse = (course) =>{
-        this.setState(prevState => ({
+        this.state.courseName === ''? alert('Please Enter a Valid Course Title!'):
+            this.setState(prevState => ({
             editing: !prevState.editing
         }));
         course.title=this.state.courseName;
@@ -68,7 +69,7 @@ class CourseGridCardComponent extends React.Component{
                                    this.editCourse();
                                }}>
                             </i>
-                            <i className="far fa-trash-alt float-right fa-lg my-1" onClick={() => this.props.deleteCourse(this.props.course)}> </i>
+                            <i className="far fa-trash-alt float-right fa-lg my-1 wbdv-grid-delete" onClick={() => this.props.deleteCourse(this.props.course)}> </i>
                         </div>
                     </div>
                 }

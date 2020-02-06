@@ -68,26 +68,25 @@ class CourseManagerContainer extends React.Component {
     }
 
     editCourse = (course) => {
-            this.setState(prevState => ({
-                    courses: prevState.courses.map (crs => {
-                        crs.editing = course._id === crs._id;
-                        return crs
-                    })
+        this.setState(prevState => ({
+                courses: prevState.courses.map (crs => {
+                    crs.editing = course._id === crs._id;
+                    return crs
                 })
-            )
+            })
+        )
     }
 
     updateCourse = (course) => {
         this.date = new Date();
         course.dateModified =  this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear();
-        console.log(course);
         courseService.updateCourse(course._id, course)
             .then(() => {
                 courseService.findAllCourses()
                     .then(courses => {
-                        this.setState({
-                            courses: courses
-                        })
+                            this.setState({
+                                courses: courses
+                            })
                     })
             })
     }
@@ -99,9 +98,7 @@ class CourseManagerContainer extends React.Component {
                 <CourseHeadingComponent
                     updateFormState = {this.updateFormState}
                     newCourseTitle = {this.state.newCourseTitle}
-                    addCourse = {this.addCourse}
-                />
-
+                    addCourse = {this.addCourse}/>
                 {this.state.layout === 'grid' && <CourseGridComponent
                     deleteCourse={this.deleteCourse}
                     editCourse={this.editCourse}
@@ -117,7 +114,6 @@ class CourseManagerContainer extends React.Component {
             </div>
         )
     }
-
 }
 
 

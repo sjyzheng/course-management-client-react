@@ -6,7 +6,7 @@ const CourseHeadingComponent = ({updateFormState, newCourseTitle, addCourse}) =>
             <button className="navbar-toggler mr-2 wbdv-field wbdv-hamburger" type="button" data-toggle="collapse"
                     data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false"
                     aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"> </span>
             </button>
             <i className="navbar-brand d-none d-lg-inline wbdv-label wbdv-course-manager">
                 Course Manager</i>
@@ -15,8 +15,7 @@ const CourseHeadingComponent = ({updateFormState, newCourseTitle, addCourse}) =>
                    placeholder="New Course Title"
                    aria-label="Search"
                    onChange={updateFormState}
-                   value={newCourseTitle}
-            />
+                   value={newCourseTitle}/>
             <i className="fas fa-plus-circle fa-2x col-2 wbdv-button wbdv-add-course"
                onClick={addCourse}>
             </i>

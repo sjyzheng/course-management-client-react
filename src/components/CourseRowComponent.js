@@ -25,7 +25,8 @@ class CourseRowComponent extends React.Component {
     }
 
     saveCourse = (course) =>{
-        this.setState(prevState => ({
+        this.state.courseName === ''? alert('Please Enter a Valid Course Title!'):
+            this.setState(prevState => ({
             editing: !prevState.editing
         }));
         course.title=this.state.courseName;
@@ -62,7 +63,6 @@ class CourseRowComponent extends React.Component {
                             <div className="col-8 col-md-6 col-lg-6">{this.props.course.title}</div>
                             <div className="col-md-4 col-lg-2 text-center d-none d-md-block wbdv-row wbdv-owner">me</div>
                             <div className="col-lg-2 text-center d-none d-lg-block wbdv-row wbdv-modified-date">{this.props.course.dateModified}</div>
-
                             <div className="col-4 col-md-2">
                                 <i className="far fa-trash-alt fa-lg float-right mt-2 ml-2"
                                    onClick={() => this.props.deleteCourse(this.props.course)}>

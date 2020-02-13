@@ -98,7 +98,6 @@ class CourseManagerContainer extends React.Component {
     render() {
         return (
             <div className="container-fluid p-0">
-
                 <Router>
                     <Redirect from="/" to="/table"/>
                     <Route path="/table" render={(props) =>
@@ -115,7 +114,6 @@ class CourseManagerContainer extends React.Component {
                                 // toggle={this.toggle}
                                 courses={this.state.courses}/>
                         </div>
-
                     }/>
 
                     <Route path="/grid" render={(props) =>

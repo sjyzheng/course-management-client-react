@@ -78,7 +78,7 @@ class LessonTabsItemComponent extends React.Component {
                            onClick={() => {
                                this.props.deleteLesson(this.state.lessonId);
                                console.log(this.state.lessonId)
-                               if (this.state.active) {
+                               if (this.state.lessonId === this.props.params.lessonId) {
                                    this.props.history.push(`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/lessonList/topics/topicList`)
                                }
                            }}>

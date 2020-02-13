@@ -1,7 +1,8 @@
 import React from "react";
 import CourseRowComponent from "./CourseRowComponent";
+import {Link} from "react-router-dom";
 
-const CourseTableComponent = ({courses, deleteCourse, editCourse, updateCourse, toggle}) =>
+const CourseTableComponent = ({courses, deleteCourse, editCourse, updateCourse}) =>
     <div>
         <div className="container col-12" id="firstRow">
             <div id="table-title" className="row my-3">
@@ -10,7 +11,8 @@ const CourseTableComponent = ({courses, deleteCourse, editCourse, updateCourse, 
                 <div className="col-lg-2 px-1 text-center wbdv-header wbdv-last-modified d-none d-lg-block">Last Modified</div>
                 <div className="col">
                     <i className="fas fa-sort-alpha-down ml-2 float-right wbdv-header wbdv-sort"> </i>
-                    <i className="fas fa-th mr-2 float-right wbdv-button wbdv-grid-layout" onClick={()=>toggle()}> </i>
+                    <Link to="/grid" className="fas fa-th mr-2 float-right wbdv-button wbdv-grid-layout">
+                    </Link>
                 </div>
             </div>
         </div>

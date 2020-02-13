@@ -1,7 +1,8 @@
 import React from "react";
 import CourseGridCardComponent from "./CourseGridCardComponent";
+import {Link} from "react-router-dom";
 
-const CourseGridComponent = ({courses, deleteCourse, editCourse, updateCourse, toggle}) =>
+const CourseGridComponent = ({courses, deleteCourse, editCourse, updateCourse}) =>
     <div>
         <div className="container col-12" id="firstRow">
             <div id="grid-title" className="row my-3">
@@ -10,7 +11,7 @@ const CourseGridComponent = ({courses, deleteCourse, editCourse, updateCourse, t
                 <div className="col">
                     <i className="fas fa-folder mx-2 float-right wbdv-folder"> </i>
                     <i className="fas fa-sort-alpha-down mx-2 float-right wbdv-header wbdv-sort"> </i>
-                    <i className="fas fa-list mx-2 float-right wbdv-button wbdv-list-layout" onClick={()=>toggle()}> </i>
+                    <Link to="/table" className="fas fa-list mx-2 float-right wbdv-button wbdv-list-layout"> </Link>
                 </div>
             </div>
         </div>

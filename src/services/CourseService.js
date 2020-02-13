@@ -1,7 +1,8 @@
-class CourseService {
+import {COURSES_API_URL} from "../common/constants";
 
+class CourseService {
     createCourse = (course) => {
-        return fetch('https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses', {
+        return fetch(COURSES_API_URL, {
             method: 'POST',
             body: JSON.stringify(course),
             headers: {
@@ -11,17 +12,17 @@ class CourseService {
     }
 
     findAllCourses = () => {
-        return fetch('https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses')
+        return fetch(COURSES_API_URL)
             .then(response => response.json())
     }
 
     findCourseById = (id) => {
-        return fetch(`https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses/${id}`)
+        return fetch(`${COURSES_API_URL}/${id}`)
             .then(response => response.json())
     }
 
     updateCourse = (id, course) => {
-        return fetch(`https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses/${id}`, {
+        return fetch(`${COURSES_API_URL}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(course),
             headers: {
@@ -31,7 +32,7 @@ class CourseService {
     }
 
     deleteCourse = (id) => {
-        return fetch(`https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses/${id}`, {
+        return fetch(`${COURSES_API_URL}/${id}`, {
             method: 'DELETE'
         }).then(response => response.json())
     }

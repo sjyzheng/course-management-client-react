@@ -7,13 +7,6 @@ import CourseManagerContainer from "./containers/CourseManagerContainer";
 import CourseEditorComponent from "./components/courseEditor/CourseEditorComponent"
 
 
-const App = () => (
-    <Router>
-        <div className="Page">
-            <Route path="/" component={CourseManagerContainer} exact/>
-            <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" component={CourseEditorComponent}/>
-        </div>
-    </Router>
-)
-
+const App = () =>
+    <CourseManagerContainer/>
 export default App;

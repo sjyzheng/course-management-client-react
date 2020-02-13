@@ -3,7 +3,8 @@ import CourseHeadingComponent from "../components/courseList/CourseHeadingCompon
 import CourseTableComponent from "../components/courseList/CourseTableComponent";
 import CourseGridComponent from "../components/courseList/CourseGridComponent";
 import CourseService from "../services/CourseService";
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
+import CourseEditorComponent from "../components/courseEditor/CourseEditorComponent";
 
 
 const courseService = new CourseService();
@@ -12,7 +13,7 @@ class CourseManagerContainer extends React.Component {
     date;
 
     state = {
-        layout: 'table',
+        // layout: 'table',
         newCourseTitle: '',
         courses: [],
     }
@@ -26,12 +27,12 @@ class CourseManagerContainer extends React.Component {
             })
     }
 
-    toggle = () => {
-        this.setState(prevState => ({
-                layout: prevState.layout === 'table'? 'grid': 'table'
-            })
-        )
-    }
+    // toggle = () => {
+    //     this.setState(prevState => ({
+    //             layout: prevState.layout === 'table'? 'grid': 'table'
+    //         })
+    //     )
+    // }
 
     deleteCourse = (courseToDelete) => {
         courseService.deleteCourse(courseToDelete._id)
@@ -97,42 +98,59 @@ class CourseManagerContainer extends React.Component {
     render() {
         return (
             <div className="container-fluid p-0">
-                <CourseHeadingComponent
-                    updateFormState = {this.updateFormState}
-                    newCourseTitle = {this.state.newCourseTitle}
-                    addCourse = {this.addCourse}/>
 
-                {/*<Router>*/}
-                {/*    <Route path="/table" render={() =>*/}
-                {/*        <CourseTableComponent*/}
-                {/*            deleteCourse={this.deleteCourse}*/}
-                {/*            editCourse={this.editCourse}*/}
-                {/*            updateCourse={this.updateCourse}*/}
-                {/*            toggle={this.toggle}*/}
-                {/*            courses={this.state.courses}/>*/}
-                {/*    }/>*/}
-                {/*    <Route path="/grid" render={() =>*/}
-                {/*        <CourseGridComponent*/}
-                {/*            deleteCourse={this.deleteCourse}*/}
-                {/*            editCourse={this.editCourse}*/}
-                {/*            updateCourse={this.updateCourse}*/}
-                {/*            toggle={this.toggle}*/}
-                {/*            courses={this.state.courses}/>*/}
-                {/*    }/>*/}
-                {/*</Router>*/}
+                <Router>
+                    <Redirect from="/" to="/table"/>
+                    <Route path="/table" render={(props) =>
+                        <div>
+                            <CourseHeadingComponent
+                                updateFormState = {this.updateFormState}
+                                newCourseTitle = {this.state.newCourseTitle}
+                                addCourse = {this.addCourse}/>
+                            <CourseTableComponent
+                                {...props}
+                                deleteCourse={this.deleteCourse}
+                                editCourse={this.editCourse}
+                                updateCourse={this.updateCourse}
+                                // toggle={this.toggle}
+                                courses={this.state.courses}/>
+                        </div>
 
-                {this.state.layout === 'grid' && <CourseGridComponent
-                    deleteCourse={this.deleteCourse}
-                    editCourse={this.editCourse}
-                    updateCourse={this.updateCourse}
-                    toggle={this.toggle}
-                    courses={this.state.courses}/>}
-                {this.state.layout === 'table' && <CourseTableComponent
-                    deleteCourse={this.deleteCourse}
-                    editCourse={this.editCourse}
-                    updateCourse={this.updateCourse}
-                    toggle={this.toggle}
-                    courses={this.state.courses}/>}
+                    }/>
+
+                    <Route path="/grid" render={(props) =>
+                        <div>
+                            <CourseHeadingComponent
+                                updateFormState = {this.updateFormState}
+                                newCourseTitle = {this.state.newCourseTitle}
+                                addCourse = {this.addCourse}/>
+                            <CourseGridComponent
+                                {...props}
+                                deleteCourse={this.deleteCourse}
+                                editCourse={this.editCourse}
+                                updateCourse={this.updateCourse}
+                                toggle={this.toggle}
+                                courses={this.state.courses}/>
+                        </div>
+                    }/>
+
+                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" component={CourseEditorComponent}/>
+                </Router>
+
+
+
+                {/*{this.state.layout === 'grid' && <CourseGridComponent*/}
+                {/*    deleteCourse={this.deleteCourse}*/}
+                {/*    editCourse={this.editCourse}*/}
+                {/*    updateCourse={this.updateCourse}*/}
+                {/*    toggle={this.toggle}*/}
+                {/*    courses={this.state.courses}/>}*/}
+                {/*{this.state.layout === 'table' && <CourseTableComponent*/}
+                {/*    deleteCourse={this.deleteCourse}*/}
+                {/*    editCourse={this.editCourse}*/}
+                {/*    updateCourse={this.updateCourse}*/}
+                {/*    toggle={this.toggle}*/}
+                {/*    courses={this.state.courses}/>}*/}
             </div>
         )
     }

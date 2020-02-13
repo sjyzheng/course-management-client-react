@@ -27,3 +27,12 @@
     font-weight: bold;
     font-style: normal;
 }
+
+.wbdv-course-editor-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wbdv-module-item {
+    background-color: lightslategrey;
+}

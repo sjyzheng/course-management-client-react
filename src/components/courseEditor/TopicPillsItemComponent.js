@@ -47,7 +47,7 @@ class TopicPillsItemComponent extends React.Component {
 
     render() {
         return (
-            <div className={`nav-item`}>
+            <div className={`nav-item`} data-toggle="tooltip" data-placement="right" title={this.state.topicTitle}>
                 {!this.state.editing &&
                 <div className={`nav-link mx-1 ${(this.state.topicId === this.props.params.topicId || this.state.active)?'active': 'bg-light'}`}>
                     <Link to={`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topicId}`}

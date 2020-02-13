@@ -49,8 +49,10 @@ class ModuleListItemComponent extends React.Component {
         return (
             <li className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-module-item ${(this.state.moduleId === this.props.params.moduleId || this.state.active)?'active':''}`}>
                 {!this.state.editing &&
-                    <div className="row">
-                        <Link to={`/courses/${this.props.courseId}/modules/${this.state.moduleId}/lessons/lessonList/topics/topicList`} className="text-white text-truncate wbdv-module-item-title ml-2 col-7" key={this.state.moduleId}>
+                    <div className="row" data-toggle="tooltip" data-placement="right" title={this.state.moduleTitle}>
+                        <Link to={`/courses/${this.props.courseId}/modules/${this.state.moduleId}/lessons/lessonList/topics/topicList`}
+                              className="text-white text-truncate wbdv-module-item-title ml-2 col-7 "
+                              key={this.state.moduleId}>
                             {this.state.moduleTitle}
                         </Link>
                         <i className="fas fa-pencil-alt text-right mt-1 ml-2 wbdv-module-item-delete-btn col" onClick={(e) => {

@@ -28,9 +28,10 @@ class ModuleListComponent extends React.Component {
                     />
                 )}
 
-                <div className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-add-module text-center text-white`}
-                    style={{backgroundColor : "#FFA000"}}
-                    onClick={
+                <div className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-add-module text-center text-white text-truncate`}
+                     data-toggle="tooltip" data-placement="right" title="Add Module"
+                     style={{backgroundColor : "#FFA000"}}
+                     onClick={
                         () => this.props.createModule(this.props.courseId, {title: 'New Module'})}>
                     Add Module
                 </div>

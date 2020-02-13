@@ -1,8 +1,10 @@
 import React from "react";
-import CourseHeadingComponent from "../components/CourseHeadingComponent";
-import CourseTableComponent from "../components/CourseTableComponent";
-import CourseGridComponent from "../components/CourseGridComponent";
+import CourseHeadingComponent from "../components/courseList/CourseHeadingComponent";
+import CourseTableComponent from "../components/courseList/CourseTableComponent";
+import CourseGridComponent from "../components/courseList/CourseGridComponent";
 import CourseService from "../services/CourseService";
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+
 
 const courseService = new CourseService();
 
@@ -99,6 +101,26 @@ class CourseManagerContainer extends React.Component {
                     updateFormState = {this.updateFormState}
                     newCourseTitle = {this.state.newCourseTitle}
                     addCourse = {this.addCourse}/>
+
+                {/*<Router>*/}
+                {/*    <Route path="/table" render={() =>*/}
+                {/*        <CourseTableComponent*/}
+                {/*            deleteCourse={this.deleteCourse}*/}
+                {/*            editCourse={this.editCourse}*/}
+                {/*            updateCourse={this.updateCourse}*/}
+                {/*            toggle={this.toggle}*/}
+                {/*            courses={this.state.courses}/>*/}
+                {/*    }/>*/}
+                {/*    <Route path="/grid" render={() =>*/}
+                {/*        <CourseGridComponent*/}
+                {/*            deleteCourse={this.deleteCourse}*/}
+                {/*            editCourse={this.editCourse}*/}
+                {/*            updateCourse={this.updateCourse}*/}
+                {/*            toggle={this.toggle}*/}
+                {/*            courses={this.state.courses}/>*/}
+                {/*    }/>*/}
+                {/*</Router>*/}
+
                 {this.state.layout === 'grid' && <CourseGridComponent
                     deleteCourse={this.deleteCourse}
                     editCourse={this.editCourse}

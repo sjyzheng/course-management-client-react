@@ -26,7 +26,6 @@ class ModuleListItemComponent extends React.Component {
     }
 
     saveModule = (module) =>{
-        // console.log(module);
         if (this.state.moduleTitle === '') {
             alert('Please Enter a Valid Module Title!');
         } else {

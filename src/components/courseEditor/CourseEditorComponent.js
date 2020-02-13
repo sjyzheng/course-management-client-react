@@ -50,10 +50,10 @@ const CourseEditorComponent = ({match, history}) =>
                     <div className="col-9">
                         <div className="my-2">
                             {match.params.moduleId !== 'moduleList'? <LessonTabsContainer
-                                    courseId = {match.params.courseId}
-                                    moduleId = {match.params.moduleId}
-                                    history = {history}
-                                    params = {match.params}/>
+                                courseId = {match.params.courseId}
+                                moduleId = {match.params.moduleId}
+                                history = {history}
+                                params = {match.params}/>
                             :''}
                         </div>
 

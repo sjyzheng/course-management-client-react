@@ -29,7 +29,6 @@ class LessonTabsComponent extends React.Component {
                 )}
 
                 <div className="nav-item">
-                    {console.log(this.props.lessons)}
                     {this.props.moduleId &&
                     <div className="nav-link"
                        onClick={() => {

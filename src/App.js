@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Link, Route}
     from 'react-router-dom'
 import './styles/CourseList.style.client.css'
 import CourseManagerContainer from "./containers/CourseManagerContainer";
-import CourseEditorComponent from "./components/courseEditor/CourseEditorComponent"
+import CourseEditorContainer from "./containers/CourseEditorContainer"
 
 
 const App = () =>

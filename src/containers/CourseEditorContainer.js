@@ -1,15 +1,15 @@
 import React from "react";
 
-import WidgetListComponent from "./WidgeListComponent";
+import WidgetListComponent from "../components/courseEditor/WidgeListComponent";
 import {Provider} from "react-redux";
-import moduleReducer from "../../reducers/moduleReducer";
-import lessonReducer from "../../reducers/lessonReducer";
-import topicReducer from "../../reducers/topicReducer";
-import ModuleListContainer from "../../containers/ModuleListContainer";
+import moduleReducer from "../reducers/moduleReducer";
+import lessonReducer from "../reducers/lessonReducer";
+import topicReducer from "../reducers/topicReducer";
+import ModuleListContainer from "./ModuleListContainer";
 import {combineReducers, createStore} from "redux";
-import LessonTabsContainer from "../../containers/LessonTabsContainer";
-import CourseEditorNavBarComponent from "./CourseEditorNavBarComponent";
-import TopicPillsContainer from "../../containers/TopicPillsContainer";
+import LessonTabsContainer from "./LessonTabsContainer";
+import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
+import TopicPillsContainer from "./TopicPillsContainer";
 // import CourseEditorDropdownsContainer from "../../containers/CourseEditorDropdownsContainer";
 // import CourseEditorDropdownsComponent from "./CourseEditorDropdownsComponent";
 
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-const CourseEditorComponent = ({match, history}) =>
+const CourseEditorContainer = ({match, history}) =>
     <Provider store={store}>
         <div>
             <div className="container-fluid p-0">
@@ -80,4 +80,4 @@ const CourseEditorComponent = ({match, history}) =>
         </div>
     </Provider>
 
-export default CourseEditorComponent
+export default CourseEditorContainer

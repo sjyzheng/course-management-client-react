@@ -4,7 +4,7 @@ import CourseTableComponent from "../components/courseList/CourseTableComponent"
 import CourseGridComponent from "../components/courseList/CourseGridComponent";
 import CourseService from "../services/CourseService";
 import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
-import CourseEditorComponent from "../components/courseEditor/CourseEditorComponent";
+import CourseEditorContainer from "./CourseEditorContainer";
 
 
 const courseService = new CourseService();
@@ -132,10 +132,10 @@ class CourseManagerContainer extends React.Component {
                         </div>
                     }/>
 
-                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" component={CourseEditorComponent}/>
-                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId" exact={true} component={CourseEditorComponent}/>
-                    <Route path="/courses/:courseId/modules/:moduleId" exact={true} component={CourseEditorComponent}/>
-                    <Route path="/courses/:courseId" exact={true} component={CourseEditorComponent}/>
+                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" exact={true} component={CourseEditorContainer}/>
+                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId" exact={true} component={CourseEditorContainer}/>
+                    <Route path="/courses/:courseId/modules/:moduleId" exact={true} component={CourseEditorContainer}/>
+                    <Route path="/courses/:courseId" exact={true} component={CourseEditorContainer}/>
 
 
 

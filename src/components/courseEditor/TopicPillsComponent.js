@@ -29,6 +29,8 @@ class TopicPillsComponent extends React.Component {
                            history = {this.props.history}
                        />
                    )}
+
+                   {this.props.lessonId &&
                    <div className={`nav-item`}>
                        <div className="nav-link bg-light mx-1 wbdv-topic-add-btn"
                             onClick={()=>{
@@ -36,7 +38,7 @@ class TopicPillsComponent extends React.Component {
                             }}>
                            Add Topic
                        </div>
-                   </div>
+                   </div>}
 
 
                 </div>

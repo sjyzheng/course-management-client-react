@@ -27,7 +27,6 @@ class LessonTabsItemComponent extends React.Component {
     }
 
     saveLesson = (lesson) =>{
-        // console.log(module);
         if (this.state.lessonTitle === '') {
             alert('Please Enter a Valid Lesson Title!');
         } else {
@@ -51,7 +50,7 @@ class LessonTabsItemComponent extends React.Component {
             <div className={`nav-item wbdv-lesson-item`} data-toggle="tooltip" data-placement="right" title={this.state.lessonTitle}>
                 {!this.state.editing &&
                     <div className={`nav-link mx-1 ${(this.state.lessonId === this.props.params.lessonId || this.state.active)?'active':''}`} >
-                        <Link to={`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lessonId}/topics/topicList`}
+                        <Link to={`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lessonId}`}
                               className="text-truncate wbdv-module-item-title text-dark"
                               key={this.state.lessonId}>
                             {this.state.lessonTitle}
@@ -77,7 +76,6 @@ class LessonTabsItemComponent extends React.Component {
                         <i className="far fa-trash-alt mx-2"
                            onClick={() => {
                                this.props.deleteLesson(this.state.lessonId);
-                               console.log(this.state.lessonId)
                                if (this.state.lessonId === this.props.params.lessonId) {
                                    this.props.history.push(`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/lessonList/topics/topicList`)
                                }

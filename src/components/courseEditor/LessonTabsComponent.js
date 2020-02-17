@@ -29,12 +29,14 @@ class LessonTabsComponent extends React.Component {
                 )}
 
                 <div className="nav-item">
+                    {console.log(this.props.lessons)}
+                    {this.props.moduleId &&
                     <div className="nav-link"
                        onClick={() => {
-                           this.props.createLesson(this.props.moduleId, {title: 'New Lesson'})
+                           this.props.createLesson(this.props.params.moduleId, {title: 'New Lesson'})
                        }}>
                         Add Lesson
-                    </div>
+                    </div>}
                 </div>
             </div>
         )

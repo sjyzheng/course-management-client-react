@@ -49,25 +49,30 @@ const CourseEditorComponent = ({match, history}) =>
                     </div>
                     <div className="col-9">
                         <div className="my-2">
-                            {match.params.moduleId !== 'moduleList'? <LessonTabsContainer
+                            <LessonTabsContainer
                                 courseId = {match.params.courseId}
                                 moduleId = {match.params.moduleId}
                                 history = {history}
                                 params = {match.params}/>
-                            :''}
                         </div>
 
                         <div>
-                            {match.params.lessonId !== 'lessonList'? <TopicPillsContainer
+                            <TopicPillsContainer
                                     courseId = {match.params.courseId}
                                     moduleId = {match.params.moduleId}
                                     lessonId = {match.params.lessonId}
                                     history = {history}
                                     params = {match.params}/>
-                                :''}
                         </div>
                         <div>
-                            {match.params.topicId !== 'topicList'? <WidgetListComponent/>:''}
+                            {match.params.topicId !== undefined &&
+                            <WidgetListComponent
+                                courseId = {match.params.courseId}
+                                moduleId = {match.params.moduleId}
+                                lessonId = {match.params.lessonId}
+                                topicId = {match.params.topicId}
+                                history = {history}
+                                params = {match.params}/>}
                         </div>
                     </div>
                 </div>

@@ -13,8 +13,12 @@ const stateToPropertyMapper = (state) => ({
 const dispatchToPropertyMapper = (dispatch) => ({
     createLesson: (moduleId, lesson) =>
         lessonService.createLesson(moduleId, lesson)
-            .then(actualLesson =>
-                dispatch(createLesson(actualLesson))
+            .then(actualLesson => {
+                dispatch(createLesson(actualLesson));
+                // console.log(moduleId)
+
+                }
+
             ),
     findLessonsForModule: (moduleId) =>
         lessonService.findLessonsForModule(moduleId)

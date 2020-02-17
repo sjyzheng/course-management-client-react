@@ -133,6 +133,12 @@ class CourseManagerContainer extends React.Component {
                     }/>
 
                     <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" component={CourseEditorComponent}/>
+                    <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId" exact={true} component={CourseEditorComponent}/>
+                    <Route path="/courses/:courseId/modules/:moduleId" exact={true} component={CourseEditorComponent}/>
+                    <Route path="/courses/:courseId" exact={true} component={CourseEditorComponent}/>
+
+
+
                 </Router>
 
 

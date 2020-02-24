@@ -1,57 +1,82 @@
 import React from "react";
+import WidgetListItemComponent from "./WidgetListItemComponent";
+import {previewWidgets} from "../../actions/widgetActions";
+import Switch from "react-switch"
 
-const WidgetListComponent = () => (
-    <div>
-        <ul className="nav nav-pills justify-content-end mt-2">
-            <li className="nav-item">
-                <a className="nav-link active bg-success mx-1" href="#">Save</a>
-            </li>
-            <li className="nav-item custom-control custom-switch">
-                <input type="checkbox" className="custom-control-input" id="customSwitch1"/>
-                    <label className="custom-control-label m-2" htmlFor="customSwitch1">Preview</label>
-            </li>
-        </ul>
 
-        <div className="border m-3 p-2 rounded">
-            <div className="form-row d-flex justify-content-between">
-                <div className="col">
-                    <h2>Heading Widget</h2>
+class WidgetListComponent extends React.Component {
+    componentDidMount() {
+        this.props.findWidgetsForTopic(this.props.topicId);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.topicId !== prevProps.topicId) {
+            this.props.findWidgetsForTopic(this.props.topicId);
+            this.setState({previewing: false})
+        }
+    }
+
+    state = {
+        editing: false,
+        previewing: false,
+        topicId: this.props.topicId,
+    }
+
+    previewWidgets = () => {
+        this.setState(prevState => ({
+            previewing: !prevState.previewing
+        }));
+    };
+
+    render(){
+        return (
+            <div>
+                <div className="row justify-content-end mt-2 mr-3">
+                    <label className="mr-3" htmlFor="switchControl">Preview</label>
+                    <Switch id="switchControl" onChange={this.previewWidgets} checked={this.state.previewing} />
                 </div>
-                <div className="col-lg-4 col-md-6 float-right">
-                    <i className="fas fa-arrow-circle-up fa-2x mr-1"> </i>
-                    <i className="fas fa-arrow-circle-down fa-2x mr-1"> </i>
-                    <select className="custom-select mb-3 col-5 mr-1" defaultValue="0">
-                        <option value="0">Heading</option>
-                        <option value="1">Paragraph</option>
-                        <option value="2">List</option>
-                        <option value="3">Image</option>
-                    </select>
-                    <i className="fas fa-times-circle fa-2x"> </i>
+
+                <div>
+                    {this.props.widgets && this.props.widgets
+                        // .sort((a,b) => {
+                        //     if (a.order > b.order) return 1;
+                        //     else return -1;
+                        // })
+                        .map(widget =>
+                        <div key={widget.id}>
+                            <WidgetListItemComponent
+                                widgets = {this.props.widgets}
+                                widget = {widget}
+                                courseId = {this.props.courseId}
+                                moduleId = {this.props.moduleId}
+                                lessonId = {this.props.lessonId}
+                                topicId = {this.state.topicId}
+                                editing = {this.state.editing}
+                                previewing = {this.state.previewing}
+                                deleteWidget = {this.props.deleteWidget}
+                                updateWidget = {this.props.updateWidget}
+                                moveUpWidget = {this.props.moveUpWidget}
+                                moveDownWidget = {this.props.moveDownWidget}
+                                params = {this.props.params}
+                                history = {this.props.history}
+                            />
+                        </div>
+                    )}
+                </div>
+
+
+                <div className="fas fa-plus-circle fa-2x float-right mr-2 wbdv-button wbdv-add-course"
+                     onClick={()=>{
+                         this.props.createWidget(this.props.topicId,
+                             {text: 'New Widget',
+                                 id: (new Date()).getTime()+"",
+                             })
+                     }}>
                 </div>
             </div>
+        )
+    }
 
-            <div className="form-group">
-                <label htmlFor="exampleFormControlInput1"> </label>
-                <input id="exampleFormControlInput1" className="form-control" type="text"
-                       placeholder="Heading text"/>
-            </div>
-
-            <div className="form-group">
-                <select className="custom-select">
-                    <option>Heading 1</option>
-                    <option>Heading 2</option>
-                </select>
-            </div>
-
-            <div className="form-group">
-                <input className="form-control" type="text"
-                       placeholder="Widget name"/>
-            </div>
-            <h3>Preview</h3>
-            <h1>Heading text</h1>
-        </div>
-        <i className="fas fa-plus-circle fa-2x float-right mr-2 wbdv-button wbdv-add-course"> </i>
-    </div>
-)
+}
 
 export default WidgetListComponent

@@ -5,18 +5,21 @@ import {Provider} from "react-redux";
 import moduleReducer from "../reducers/moduleReducer";
 import lessonReducer from "../reducers/lessonReducer";
 import topicReducer from "../reducers/topicReducer";
+import widgetReducer from "../reducers/widgetReducer";
 import ModuleListContainer from "./ModuleListContainer";
 import {combineReducers, createStore} from "redux";
 import LessonTabsContainer from "./LessonTabsContainer";
 import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
 import TopicPillsContainer from "./TopicPillsContainer";
+import WidgetListContainer from "./WidgetListContainer";
 // import CourseEditorDropdownsContainer from "../../containers/CourseEditorDropdownsContainer";
 // import CourseEditorDropdownsComponent from "./CourseEditorDropdownsComponent";
 
 const rootReducer = combineReducers({
     moduleReducer,
     lessonReducer,
-    topicReducer
+    topicReducer,
+    widgetReducer
 })
 
 const store = createStore(rootReducer);
@@ -66,7 +69,7 @@ const CourseEditorContainer = ({match, history}) =>
                         </div>
                         <div>
                             {match.params.topicId !== undefined &&
-                            <WidgetListComponent
+                            <WidgetListContainer
                                 courseId = {match.params.courseId}
                                 moduleId = {match.params.moduleId}
                                 lessonId = {match.params.lessonId}

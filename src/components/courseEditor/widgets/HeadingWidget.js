@@ -43,8 +43,10 @@ class HeadingWidget extends React.Component {
                         </div>
                         <div className="col-lg-4 col-md-6 float-right">
                             <i className="fas fa-arrow-circle-up fa-2x mr-1"
+                               style={{color: "gold" }}
                                onClick={() => this.props.moveUpWidget(this.state.widget)}> </i>
                             <i className="fas fa-arrow-circle-down fa-2x mr-1"
+                               style={{color: "gold"}}
                                onClick={() => this.props.moveDownWidget(this.state.widget)}> </i>
                             <select className="custom-select mb-3 col-5 mr-1"
                                     value={this.state.widget.type}
@@ -66,9 +68,11 @@ class HeadingWidget extends React.Component {
                                 {/*<option value="3">Image</option>*/}
                             </select>
                             <i className="fas fa-times-circle fa-2x"
+                               style={{color: "red"}}
                                onClick={()=>{this.props.deleteWidget(this.state.widgetId)}}>
                             </i>
                             <i className="fas fa-check-circle fa-2x"
+                               style={{color: "LawnGreen"}}
                                onClick={()=>{
                                    this.props.saveWidget(this.state.widget);
                                    this.setState({editing: false})

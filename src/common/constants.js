@@ -2,9 +2,9 @@ export const COURSES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/sj
 export const MODULES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/sjzheng/modules";
 export const LESSONS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/sjzheng/lessons";
 export const TOPICS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/sjzheng/topics";
-export const WIDGETS_API_URL = "http://localhost:8080/widgets";
+export const WIDGETS_API_URL = "https://wbdv-sp20-jzheng-springboot.herokuapp.com/widgets";
 
 export const COURSES_MODULES_API_URL = (courseId) => `https://wbdv-generic-server.herokuapp.com/api/sjzheng/courses/${courseId}/modules`;
 export const MODULES_LESSONS_API_URL = (moduleId) => `https://wbdv-generic-server.herokuapp.com/api/sjzheng/modules/${moduleId}/lessons`;
 export const LESSONS_TOPICS_API_URL = (lessonId) => `https://wbdv-generic-server.herokuapp.com/api/sjzheng/lessons/${lessonId}/topics`;
-export const TOPICS_WIDGETS_API_URL = (topicId) => `http://localhost:8080/topics/${topicId}/widgets`;
+export const TOPICS_WIDGETS_API_URL = (topicId) => `https://wbdv-sp20-jzheng-springboot.herokuapp.com/topics/${topicId}/widgets`;

@@ -9,7 +9,7 @@ class HeadingWidget extends React.Component {
             widgetId: this.props.widgetId,
             widgetText: this.props.widgetText,
             widgetTitle: this.props.widget.title
-        }
+        };
     }
 
 
@@ -52,20 +52,10 @@ class HeadingWidget extends React.Component {
                                     value={this.state.widget.type}
                                     onChange={(e) => {
                                         const newType = e.target.value;
-                                        // this.setState(prevState => ({
-                                        //     widget: {
-                                        //         ...prevState.widget,
-                                        //         type: newType,
-                                        //         title: (prevState.widgetTitle === "Heading Widget"? "Paragraph Widget":"Heading Widget"),
-                                        //         size: 1
-                                        //     }
-                                        // }));
                                         this.props.updateWidgetType({...this.state.widget, type: newType, title: "Paragraph Widget", size: 1})
                                     }}>
                                 <option value="HEADING">Heading</option>
                                 <option value="PARAGRAPH">Paragraph</option>
-                                {/*<option value="2">List</option>*/}
-                                {/*<option value="3">Image</option>*/}
                             </select>
                             <i className="fas fa-times-circle fa-2x"
                                style={{color: "red"}}
@@ -99,7 +89,6 @@ class HeadingWidget extends React.Component {
                     </div>
 
                     <div className="form-group">
-
                         <select className="custom-select"
                                 value={this.state.widget.size}
                                 onChange={(e) => {

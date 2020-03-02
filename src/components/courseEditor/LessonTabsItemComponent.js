@@ -12,13 +12,6 @@ class LessonTabsItemComponent extends React.Component {
         }
     }
 
-    selectLesson = () => {
-        this.setState(prevState => ({
-            editing: false,
-            lessonTitle: this.state.lessonTitle
-        }))
-    }
-
     editLesson = () => {
         this.setState(prevState => ({
             active: true,

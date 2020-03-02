@@ -12,12 +12,6 @@ class ModuleListItemComponent extends React.Component {
         }
     }
 
-    selectModule = () => {
-        this.setState({
-            editing: false,
-        })
-    }
-
     editModule = () => {
         this.setState(prevState => ({
             active: !prevState.active,

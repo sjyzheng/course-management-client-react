@@ -1,8 +1,50 @@
 import React from "react";
 import {connect} from "react-redux";
 import {findLessonsForModule, createLesson, deleteLesson, updateLesson} from "../actions/lessonActions";
-import LessonTabsComponent from "../components/courseEditor/LessonTabsComponent";
 import LessonService from "../services/LessonService";
+import LessonTabsItemComponent from "../components/courseEditor/LessonTabsItemComponent";
+
+class LessonTabsContainer extends React.Component {
+    componentDidMount() {
+        this.props.findLessonsForModule(this.props.moduleId);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.moduleId !== prevProps.moduleId) {
+            this.props.findLessonsForModule(this.props.moduleId)
+        }
+    }
+
+    render() {
+        return (
+            <div className="nav nav-tabs nav-fill">
+                {this.props.lessons && this.props.lessons.map(lesson =>
+                    <LessonTabsItemComponent
+                        lesson = {lesson}
+                        key = {lesson._id}
+                        courseId = {this.props.courseId}
+                        moduleId = {this.props.moduleId}
+                        deleteLesson = {this.props.deleteLesson}
+                        updateLesson = {this.props.updateLesson}
+                        params = {this.props.params}
+                        history = {this.props.history}
+                    />
+                )}
+
+                <div className="nav-item">
+                    {this.props.moduleId &&
+                    <div className="nav-link"
+                         onClick={() => {
+                             this.props.createLesson(this.props.params.moduleId, {title: 'New Lesson'})
+                         }}>
+                        Add Lesson
+                    </div>}
+                </div>
+            </div>
+        )
+    }
+}
+
 
 const lessonService = new LessonService();
 
@@ -14,11 +56,7 @@ const dispatchToPropertyMapper = (dispatch) => ({
     createLesson: (moduleId, lesson) =>
         lessonService.createLesson(moduleId, lesson)
             .then(actualLesson => {
-                dispatch(createLesson(actualLesson));
-                // console.log(moduleId)
-
-                }
-
+                dispatch(createLesson(actualLesson))}
             ),
     findLessonsForModule: (moduleId) =>
         lessonService.findLessonsForModule(moduleId)
@@ -35,9 +73,8 @@ const dispatchToPropertyMapper = (dispatch) => ({
                 dispatch(updateLesson(lesson, lessonId))
             )
 });
-const LessonTabsContainer = connect(
+
+export default connect(
     stateToPropertyMapper,
     dispatchToPropertyMapper
-)(LessonTabsComponent);
-
-export default LessonTabsContainer
+)(LessonTabsContainer);

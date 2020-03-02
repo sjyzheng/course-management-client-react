@@ -3,7 +3,7 @@ import CourseHeadingComponent from "../components/courseList/CourseHeadingCompon
 import CourseTableComponent from "../components/courseList/CourseTableComponent";
 import CourseGridComponent from "../components/courseList/CourseGridComponent";
 import CourseService from "../services/CourseService";
-import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import CourseEditorContainer from "./CourseEditorContainer";
 
 
@@ -13,7 +13,6 @@ class CourseManagerContainer extends React.Component {
     date;
 
     state = {
-        // layout: 'table',
         newCourseTitle: '',
         courses: [],
     }
@@ -26,13 +25,6 @@ class CourseManagerContainer extends React.Component {
                 })
             })
     }
-
-    // toggle = () => {
-    //     this.setState(prevState => ({
-    //             layout: prevState.layout === 'table'? 'grid': 'table'
-    //         })
-    //     )
-    // }
 
     deleteCourse = (courseToDelete) => {
         courseService.deleteCourse(courseToDelete._id)
@@ -51,7 +43,6 @@ class CourseManagerContainer extends React.Component {
         this.state.newCourseTitle === ''? alert('Please Enter a Valid Course Title!'):
         courseService.createCourse({
             title: this.state.newCourseTitle,
-            // editing: 'false',
             dateModified: this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear()
         }).then(() => {
             courseService.findAllCourses()
@@ -111,7 +102,6 @@ class CourseManagerContainer extends React.Component {
                                 deleteCourse={this.deleteCourse}
                                 editCourse={this.editCourse}
                                 updateCourse={this.updateCourse}
-                                // toggle={this.toggle}
                                 courses={this.state.courses}/>
                         </div>
                     }/>
@@ -135,26 +125,8 @@ class CourseManagerContainer extends React.Component {
                     <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" exact={true} component={CourseEditorContainer}/>
                     <Route path="/courses/:courseId/modules/:moduleId/lessons/:lessonId" exact={true} component={CourseEditorContainer}/>
                     <Route path="/courses/:courseId/modules/:moduleId" exact={true} component={CourseEditorContainer}/>
-                    <Route path="/courses/:courseId" exact={true} component={CourseEditorContainer}/>
-
-
-
+                    <Route path="/courses/:courseId" component={CourseEditorContainer}/>
                 </Router>
-
-
-
-                {/*{this.state.layout === 'grid' && <CourseGridComponent*/}
-                {/*    deleteCourse={this.deleteCourse}*/}
-                {/*    editCourse={this.editCourse}*/}
-                {/*    updateCourse={this.updateCourse}*/}
-                {/*    toggle={this.toggle}*/}
-                {/*    courses={this.state.courses}/>}*/}
-                {/*{this.state.layout === 'table' && <CourseTableComponent*/}
-                {/*    deleteCourse={this.deleteCourse}*/}
-                {/*    editCourse={this.editCourse}*/}
-                {/*    updateCourse={this.updateCourse}*/}
-                {/*    toggle={this.toggle}*/}
-                {/*    courses={this.state.courses}/>}*/}
             </div>
         )
     }

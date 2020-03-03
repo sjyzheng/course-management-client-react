@@ -50,7 +50,7 @@ class CourseGridCardComponent extends React.Component{
                         <img src={CoursePage} className="card-img-top border" alt="..."/>
                         <div className="card-body border">
                             <Link to={{
-                                pathname: `/courses/${this.state.course._id}/modules/moduleList/lessons/lessonList/topics/topicList`,
+                                pathname: `/courses/${this.state.course._id}`,
                                 state: {courseTitle: this.state.courseName,
                                         layout: "grid"}}}
                                   onClick={event => event.stopPropagation()}>

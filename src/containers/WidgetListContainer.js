@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import WidgetService from "../services/WidgetService";
-import {createWidget, deleteWidget, findWidgetsForTopic, moveDownWidget, moveUpWidget, updateWidget, previewWidgets}from "../actions/widgetActions";
+import {createWidget, deleteWidget, findWidgetsForTopic, moveDownWidget, moveUpWidget, updateWidget}from "../actions/widgetActions";
 import Switch from "react-switch";
 import WidgetListItemComponent from "../components/courseEditor/WidgetListItemComponent";
 

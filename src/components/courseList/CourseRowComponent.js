@@ -52,7 +52,12 @@ class CourseRowComponent extends React.Component {
                     {!this.state.active &&
                         <div className="row list-group-itm">
                             <div className="col-8 col-md-6 col-lg-6">
-                                <Link to={`/courses/${this.state.course._id}`} className="wbdv-course-title" onClick={event => event.stopPropagation()}>
+                                <Link to={{
+                                    pathname: `/courses/${this.state.course._id}`,
+                                    state: {courseTitle: this.state.courseName,
+                                            layout: "table"}}}
+                                      className="wbdv-course-title"
+                                      onClick={event => event.stopPropagation()}>
                                     {this.props.course.title}
                                 </Link>
                             </div>

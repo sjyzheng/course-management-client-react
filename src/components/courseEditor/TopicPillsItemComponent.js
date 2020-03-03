@@ -12,13 +12,6 @@ class TopicPillsItemComponent extends React.Component {
         }
     }
 
-    // selectLesson = () => {
-    //     this.setState(prevState => ({
-    //         editing: false,
-    //         lessonTitle: this.state.lessonTitle
-    //     }))
-    // }
-
     editTopic = () => {
         this.setState(prevState => ({
             active: true,
@@ -50,7 +43,10 @@ class TopicPillsItemComponent extends React.Component {
             <div className={`nav-item`} data-toggle="tooltip" data-placement="right" title={this.state.topicTitle}>
                 {!this.state.editing &&
                 <div className={`nav-link mx-1 ${(this.state.topicId === this.props.params.topicId || this.state.active)?'active': 'bg-light'}`}>
-                    <Link to={`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topicId}`}
+                    <Link to={{
+                        pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topicId}`,
+                        state: {courseTitle: this.props.courseTitle,
+                            layout: this.props.layout}}}
                           className="text-truncate wbdv-topic-item-title text-dark"
                           key={this.state.topicId}>
                         {this.state.topicTitle}
@@ -76,7 +72,11 @@ class TopicPillsItemComponent extends React.Component {
                            onClick={() => {
                                this.props.deleteTopic(this.state.topicId);
                                if (this.state.topicId === this.props.params.topicId) {
-                                   this.props.history.push(`/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}`)
+                                   this.props.history.push({
+                                       pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}`,
+                                       state: {courseTitle: this.props.courseTitle,
+                                           layout: this.props.layout
+                                       }})
                                }
                            }}>
                         </i>

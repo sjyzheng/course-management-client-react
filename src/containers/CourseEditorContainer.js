@@ -10,7 +10,6 @@ import {combineReducers, createStore} from "redux";
 import LessonTabsContainer from "./LessonTabsContainer";
 import TopicPillsContainer from "./TopicPillsContainer";
 import WidgetListContainer from "./WidgetListContainer";
-import CourseService from "../services/CourseService";
 import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
 
 const rootReducer = combineReducers({
@@ -23,24 +22,10 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 
 class CourseEditorContainer extends React.Component {
-    _isMounted = false;
-
     state = {
-        courseTitle: "Course Title"
+        courseTitle: this.props.location.state.courseTitle,
+        layout: this.props.location.state.layout
     };
-
-    componentDidMount = async () => {
-        this._isMounted = true;
-        const course = await new CourseService().findCourseById(this.props.match.params.courseId);
-        if (this._isMounted) {
-            this.setState({courseTitle: course.title})
-        }
-
-        // new CourseService().findCourseById(this.props.match.params.courseId)
-        //     .then((course)=>{
-        //         this.setState({courseTitle: course.title})
-        //     });
-    }
 
     render() {
         return (
@@ -49,6 +34,7 @@ class CourseEditorContainer extends React.Component {
                     <div className="container-fluid p-0">
                         <CourseEditorNavBarComponent
                             courseTitle = {this.state.courseTitle}
+                            layout = {this.state.layout}
                         />
                     </div>
 
@@ -57,14 +43,19 @@ class CourseEditorContainer extends React.Component {
                             <div className="col-3">
                                 <ModuleListContainer
                                     courseId = {this.props.match.params.courseId}
+                                    courseTitle = {this.state.courseTitle}
+                                    layout = {this.state.layout}
                                     params = {this.props.match.params}
-                                />
+                                    history = {this.props.history}/>
+
                             </div>
                             <div className="col-9">
                                 <div className="my-2">
                                     <LessonTabsContainer
                                         courseId = {this.props.match.params.courseId}
                                         moduleId = {this.props.match.params.moduleId}
+                                        courseTitle = {this.state.courseTitle}
+                                        layout = {this.state.layout}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>
 
@@ -75,6 +66,8 @@ class CourseEditorContainer extends React.Component {
                                         courseId = {this.props.match.params.courseId}
                                         moduleId = {this.props.match.params.moduleId}
                                         lessonId = {this.props.match.params.lessonId}
+                                        courseTitle = {this.state.courseTitle}
+                                        layout = {this.state.layout}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>
                                 </div>
@@ -85,6 +78,8 @@ class CourseEditorContainer extends React.Component {
                                         moduleId = {this.props.match.params.moduleId}
                                         lessonId = {this.props.match.params.lessonId}
                                         topicId = {this.props.match.params.topicId}
+                                        courseTitle = {this.state.courseTitle}
+                                        layout = {this.state.layout}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>}
                                 </div>

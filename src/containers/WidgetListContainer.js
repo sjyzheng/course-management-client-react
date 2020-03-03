@@ -52,9 +52,6 @@ class WidgetListContainer extends React.Component {
                                 <WidgetListItemComponent
                                     widgets = {this.props.widgets}
                                     widget = {widget}
-                                    courseId = {this.props.courseId}
-                                    moduleId = {this.props.moduleId}
-                                    lessonId = {this.props.lessonId}
                                     topicId = {this.state.topicId}
                                     editing = {this.state.editing}
                                     previewing = {this.state.previewing}
@@ -62,8 +59,6 @@ class WidgetListContainer extends React.Component {
                                     updateWidget = {this.props.updateWidget}
                                     moveUpWidget = {this.props.moveUpWidget}
                                     moveDownWidget = {this.props.moveDownWidget}
-                                    params = {this.props.params}
-                                    history = {this.props.history}
                                 />
                             </div>
                         )}

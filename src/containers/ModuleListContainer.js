@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {findModulesForCourse, createModule, deleteModule, updateModule} from "../actions/moduleActions";
 import ModuleService from "../services/ModuleService";
 import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
+import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
 
 class ModuleListContainer extends React.Component {
     componentDidMount() {
@@ -23,10 +24,12 @@ class ModuleListContainer extends React.Component {
                         module = {module}
                         key = {module._id}
                         courseId = {this.props.courseId}
-                        deleteModule = {this.props.deleteModule}
-                        updateModule = {this.props.updateModule}
+                        courseTitle = {this.props.courseTitle}
+                        layout = {this.props.layout}
                         params = {this.props.params}
                         history = {this.props.history}
+                        deleteModule = {this.props.deleteModule}
+                        updateModule = {this.props.updateModule}
                     />
                 )}
 

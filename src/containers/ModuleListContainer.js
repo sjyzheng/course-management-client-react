@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {findModulesForCourse, createModule, deleteModule, updateModule} from "../actions/moduleActions";
 import ModuleService from "../services/ModuleService";
 import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
-import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
 
 class ModuleListContainer extends React.Component {
     componentDidMount() {

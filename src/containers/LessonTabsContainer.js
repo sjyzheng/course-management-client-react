@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 import {findLessonsForModule, createLesson, deleteLesson, updateLesson} from "../actions/lessonActions";
 import LessonService from "../services/LessonService";
 import LessonTabsItemComponent from "../components/courseEditor/LessonTabsItemComponent";
-import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
-import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
 
 class LessonTabsContainer extends React.Component {
     componentDidMount() {

@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {findTopicsForLesson, deleteTopic, updateTopic, createTopic} from "../actions/topicActions";
 import TopicService from "../services/TopicService";
 import TopicPillsItemComponent from "../components/courseEditor/TopicPillsItemComponent";
-import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
 
 class TopicPillsContainer extends React.Component {
     componentDidMount() {

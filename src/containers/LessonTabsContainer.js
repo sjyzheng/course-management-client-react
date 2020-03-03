@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {findLessonsForModule, createLesson, deleteLesson, updateLesson} from "../actions/lessonActions";
 import LessonService from "../services/LessonService";
 import LessonTabsItemComponent from "../components/courseEditor/LessonTabsItemComponent";
+import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
+import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
 
 class LessonTabsContainer extends React.Component {
     componentDidMount() {
@@ -24,10 +26,13 @@ class LessonTabsContainer extends React.Component {
                         key = {lesson._id}
                         courseId = {this.props.courseId}
                         moduleId = {this.props.moduleId}
-                        deleteLesson = {this.props.deleteLesson}
-                        updateLesson = {this.props.updateLesson}
+                        courseTitle = {this.props.courseTitle}
+                        layout = {this.props.layout}
                         params = {this.props.params}
                         history = {this.props.history}
+                        deleteLesson = {this.props.deleteLesson}
+                        updateLesson = {this.props.updateLesson}
+
                     />
                 )}
 

@@ -43,7 +43,10 @@ class ModuleListItemComponent extends React.Component {
             <li className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-module-item ${(this.state.moduleId === this.props.params.moduleId || this.state.active)?'active':''}`}>
                 {!this.state.editing &&
                     <div className="row" data-toggle="tooltip" data-placement="right" title={this.state.moduleTitle}>
-                        <Link to={`/courses/${this.props.courseId}/modules/${this.state.moduleId}`}
+                        <Link to={{
+                            pathname: `/courses/${this.props.courseId}/modules/${this.state.moduleId}`,
+                            state: {courseTitle: this.props.courseTitle,
+                                    layout: this.props.layout}}}
                               className="text-white text-truncate wbdv-module-item-title ml-md-2 col-7 "
                               key={this.state.moduleId}>
                             {this.state.moduleTitle}
@@ -70,7 +73,10 @@ class ModuleListItemComponent extends React.Component {
                               onClick={() => {
                                   this.props.deleteModule(this.state.moduleId);
                                   if (this.state.moduleId === this.props.params.moduleId) {
-                                      this.props.history.push(`/courses/${this.props.courseId}`)
+                                      this.props.history.push({
+                                          pathname: `/courses/${this.props.courseId}`,
+                                          state: {courseTitle: this.props.courseTitle,
+                                              layout: this.props.layout}})
                                   }
                               }}>
                            </i>

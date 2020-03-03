@@ -49,7 +49,11 @@ class CourseGridCardComponent extends React.Component{
                     <div className="card">
                         <img src={CoursePage} className="card-img-top border" alt="..."/>
                         <div className="card-body border">
-                            <Link to={`/courses/${this.state.course._id}/modules/moduleList/lessons/lessonList/topics/topicList`}  onClick={event => event.stopPropagation()}>
+                            <Link to={{
+                                pathname: `/courses/${this.state.course._id}/modules/moduleList/lessons/lessonList/topics/topicList`,
+                                state: {courseTitle: this.state.courseName,
+                                        layout: "grid"}}}
+                                  onClick={event => event.stopPropagation()}>
                                 <h6 className="wbdv-course-title card-title text-truncate">
                                     {this.props.course.title}
                                 </h6>

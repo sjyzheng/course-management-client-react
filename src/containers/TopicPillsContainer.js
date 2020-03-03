@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {findTopicsForLesson, deleteTopic, updateTopic, createTopic} from "../actions/topicActions";
 import TopicService from "../services/TopicService";
 import TopicPillsItemComponent from "../components/courseEditor/TopicPillsItemComponent";
+import ModuleListItemComponent from "../components/courseEditor/ModuleListItemComponent";
 
 class TopicPillsContainer extends React.Component {
     componentDidMount() {
@@ -23,12 +24,14 @@ class TopicPillsContainer extends React.Component {
                         topic = {topic}
                         key = {topic._id}
                         courseId = {this.props.courseId}
+                        courseTitle = {this.props.courseTitle}
                         moduleId = {this.props.moduleId}
                         lessonId = {this.props.lessonId}
-                        deleteTopic = {this.props.deleteTopic}
-                        updateTopic = {this.props.updateTopic}
+                        layout = {this.props.layout}
                         params = {this.props.params}
                         history = {this.props.history}
+                        deleteTopic = {this.props.deleteTopic}
+                        updateTopic = {this.props.updateTopic}
                     />
                 )}
 

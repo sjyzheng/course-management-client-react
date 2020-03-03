@@ -45,7 +45,6 @@ class CourseGridCardComponent extends React.Component{
     render() {
         return (
             <div className= "col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 my-2 " onClick={this.highlightCourse}>
-                {console.log(this.state.active)}
                 {!this.state.active &&
                     <div className="card">
                         <img src={CoursePage} className="card-img-top border" alt="..."/>

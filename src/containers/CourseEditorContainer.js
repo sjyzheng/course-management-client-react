@@ -23,16 +23,23 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 
 class CourseEditorContainer extends React.Component {
+    _isMounted = false;
 
     state = {
-        courseTitle: ""
+        courseTitle: "Course Title"
     };
 
-    componentDidMount() {
-        new CourseService().findCourseById(this.props.match.params.courseId)
-            .then((course)=>{
-                this.setState({courseTitle: course.title})
-            });
+    componentDidMount = async () => {
+        this._isMounted = true;
+        const course = await new CourseService().findCourseById(this.props.match.params.courseId);
+        if (this._isMounted) {
+            this.setState({courseTitle: course.title})
+        }
+
+        // new CourseService().findCourseById(this.props.match.params.courseId)
+        //     .then((course)=>{
+        //         this.setState({courseTitle: course.title})
+        //     });
     }
 
     render() {

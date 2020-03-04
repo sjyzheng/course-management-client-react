@@ -36,3 +36,13 @@
 .wbdv-module-item {
     background-color: lightslategrey;
 }
+
+.wbdv-course-widget-image {
+    max-width: 40%;
+    display: block;
+}
+
+.wbdv-course-widget-image-preview {
+    max-width: 25%;
+    display: block;
+}

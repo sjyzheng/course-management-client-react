@@ -74,7 +74,7 @@ class LessonTabsItemComponent extends React.Component {
                                this.props.deleteLesson(this.state.lessonId);
                                if (this.state.lessonId === this.props.params.lessonId) {
                                    this.props.history.push({
-                                       pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/lessonList/topics/topicList`,
+                                       pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}`,
                                        state: {courseTitle: this.props.courseTitle,
                                            layout: this.props.layout}})
                                }

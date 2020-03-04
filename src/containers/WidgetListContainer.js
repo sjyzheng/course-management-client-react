@@ -67,10 +67,7 @@ class WidgetListContainer extends React.Component {
 
                 <div className="fas fa-plus-circle fa-2x float-right mr-2 wbdv-button wbdv-add-course"
                      onClick={()=>{
-                         this.props.createWidget(this.props.topicId,
-                             {text: 'New Widget',
-                                 id: (new Date()).getTime()+"",
-                             })
+                         this.props.createWidget(this.props.topicId,{})
                      }}>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
+import ListWidget from "./widgets/ListWidget";
+import ImageWidget from "./widgets/ImageWidget";
 
 class WidgetListItemComponent extends React.Component {
     constructor(props) {
@@ -42,11 +44,9 @@ class WidgetListItemComponent extends React.Component {
     render() {
         return (
             <div>
-                {this.state.widget.type === "HEADING" &&
+                {this.state.widget.type === "Heading" &&
                 <HeadingWidget
                     widget = {this.state.widget}
-                    widgetId = {this.state.widgetId}
-                    widgetText = {this.props.widgetText}
                     editing = {this.state.editing}
                     previewing = {this.props.previewing}
                     saveWidget = {this.saveWidget}
@@ -54,13 +54,10 @@ class WidgetListItemComponent extends React.Component {
                     deleteWidget = {this.props.deleteWidget}
                     moveUpWidget = {this.moveUpWidget}
                     moveDownWidget = {this.moveDownWidget}
-                    topicId = {this.state.topicId}
                 />}
-                {this.state.widget.type === "PARAGRAPH" &&
+                {this.state.widget.type === "Paragraph" &&
                 <ParagraphWidget
                     widget = {this.state.widget}
-                    widgetId = {this.state.widgetId}
-                    widgetText = {this.props.widgetText}
                     editing = {this.state.editing}
                     previewing = {this.props.previewing}
                     saveWidget = {this.saveWidget}
@@ -68,7 +65,28 @@ class WidgetListItemComponent extends React.Component {
                     deleteWidget = {this.props.deleteWidget}
                     moveUpWidget = {this.moveUpWidget}
                     moveDownWidget = {this.moveDownWidget}
-                    topicId = {this.state.topicId}
+                />}
+                {this.state.widget.type === "List" &&
+                <ListWidget
+                    widget = {this.state.widget}
+                    editing = {this.state.editing}
+                    previewing = {this.props.previewing}
+                    saveWidget = {this.saveWidget}
+                    updateWidgetType = {this.updateWidgetType}
+                    deleteWidget = {this.props.deleteWidget}
+                    moveUpWidget = {this.moveUpWidget}
+                    moveDownWidget = {this.moveDownWidget}
+                />}
+                {this.state.widget.type === "Image" &&
+                <ImageWidget
+                    widget = {this.state.widget}
+                    editing = {this.state.editing}
+                    previewing = {this.props.previewing}
+                    saveWidget = {this.saveWidget}
+                    updateWidgetType = {this.updateWidgetType}
+                    deleteWidget = {this.props.deleteWidget}
+                    moveUpWidget = {this.moveUpWidget}
+                    moveDownWidget = {this.moveDownWidget}
                 />}
             </div>
         );

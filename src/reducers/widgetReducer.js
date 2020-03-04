@@ -7,7 +7,7 @@ import {
     WIDGET_POSITION_UP
 } from "../actions/widgetActions";
 
-const widgetReducer = (state = {widgets: [], previewing: false}, action) => {
+const widgetReducer = (state = {widgets: []}, action) => {
     switch (action.type) {
         case CREATE_WIDGET:
             return {

@@ -6,26 +6,17 @@ class ParagraphWidget extends React.Component {
         this.state = {
             editing: this.props.editing,
             widget: this.props.widget,
-            widgetId: this.props.widgetId,
-            widgetTitle: this.props.widget.title
         }
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.props.state !== prevProps.state) {
-            this.setState({editing: this.props.editing})
-        }
-    }
-
 
     render() {
         return(
             <div>
                 {(this.props.previewing || !this.state.editing) &&
-                <div className="row">
+                <div className="row align-items-center">
                     <p>{this.state.widget.text}</p>
                     {!this.props.previewing &&
-                    <i className="fas fa-pencil-alt fa-lg text-right mt-1 ml-5 wbdv-widget-edit-btn"
+                    <i className="fas fa-pencil-alt text-right ml-5 wbdv-widget-edit-btn"
                        onClick={() => {
                            this.setState({editing: true})
                        }}>
@@ -50,16 +41,22 @@ class ParagraphWidget extends React.Component {
                                     value={this.state.widget.type}
                                     onChange={(e) => {
                                         const newType = e.target.value;
-                                        this.props.updateWidgetType({...this.state.widget, type: newType, title: "Heading Widget"})
+                                        this.props.updateWidgetType({...this.state.widget,
+                                            type: newType,
+                                            title: `${newType} Widget`,
+                                            size: 1,
+                                            listType: "Unordered",
+                                            src: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                                        })
                                     }}>
-                                <option value="HEADING">Heading</option>
-                                <option value="PARAGRAPH">Paragraph</option>
-                                {/*<option value="2">List</option>*/}
-                                {/*<option value="3">Image</option>*/}
+                                <option value="Heading">Heading</option>
+                                <option>Paragraph</option>
+                                <option value="List">List</option>
+                                <option value="Image">Image</option>
                             </select>
                             <i className="fas fa-times-circle fa-2x"
                                style={{color: "red"}}
-                               onClick={()=>{this.props.deleteWidget(this.state.widgetId)}}>
+                               onClick={()=>{this.props.deleteWidget(this.state.widget.id)}}>
                             </i>
                             <i className="fas fa-check-circle fa-2x"
                                style={{color: "LawnGreen"}}

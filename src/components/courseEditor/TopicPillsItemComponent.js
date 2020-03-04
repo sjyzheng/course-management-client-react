@@ -7,7 +7,7 @@ class TopicPillsItemComponent extends React.Component {
         this.state = {
             active: false,
             editing: false,
-            topicId: this.props.topic._id,
+            topicId: this.props.topic.id,
             topicTitle: this.props.topic.title
         }
     }
@@ -28,7 +28,7 @@ class TopicPillsItemComponent extends React.Component {
                 active: !prevState.active
             }));
             topic.title=this.state.topicTitle;
-            this.props.updateTopic(topic._id, topic)
+            this.props.updateTopic(topic.id, topic)
         }
     }
 
@@ -71,7 +71,9 @@ class TopicPillsItemComponent extends React.Component {
                         <i className="far fa-trash-alt mx-2"
                            onClick={() => {
                                this.props.deleteTopic(this.state.topicId);
-                               if (this.state.topicId === this.props.params.topicId) {
+                               {console.log(this.state.topicId)}
+                               {console.log(this.props.params.topicId)}
+                               if (this.state.topicId === Number(this.props.params.topicId)) {
                                    this.props.history.push({
                                        pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}`,
                                        state: {courseTitle: this.props.courseTitle,

@@ -21,7 +21,7 @@ class TopicPillsContainer extends React.Component {
                 {this.props.topics && this.props.topics.map(topic =>
                     <TopicPillsItemComponent
                         topic = {topic}
-                        key = {topic._id}
+                        key = {topic.id}
                         courseId = {this.props.courseId}
                         courseTitle = {this.props.courseTitle}
                         moduleId = {this.props.moduleId}
@@ -38,7 +38,7 @@ class TopicPillsContainer extends React.Component {
                 <div className={`nav-item`}>
                     <div className="nav-link bg-light mx-1 wbdv-topic-add-btn"
                          onClick={()=>{
-                             this.props.createTopic(this.props.lessonId, {title: 'New Topic'})
+                             this.props.createTopic(this.props.lessonId, {})
                          }}>
                         Add Topic
                     </div>

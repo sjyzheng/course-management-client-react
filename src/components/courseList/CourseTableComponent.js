@@ -11,7 +11,7 @@ const CourseTableComponent = ({courses, deleteCourse, editCourse, updateCourse})
                 <div className="col-lg-2 px-1 text-center wbdv-header wbdv-last-modified d-none d-lg-block">Last Modified</div>
                 <div className="col">
                     <i className="fas fa-sort-alpha-down ml-2 float-right wbdv-header wbdv-sort"> </i>
-                    <Link to="/grid" className="fas fa-th mr-2 float-right wbdv-button wbdv-grid-layout">
+                    <Link to="/courseList/grid" className="fas fa-th mr-2 float-right wbdv-button wbdv-grid-layout">
                     </Link>
                 </div>
             </div>

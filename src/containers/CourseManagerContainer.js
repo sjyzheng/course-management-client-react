@@ -90,8 +90,8 @@ class CourseManagerContainer extends React.Component {
         return (
             <div className="container-fluid p-0">
                 <Router>
-                    <Redirect from="/" to="/table"/>
-                    <Route path="/table" render={(props) =>
+                    <Redirect from="/" to="/courseList/table"/>
+                    <Route path="/courseList/table" render={(props) =>
                         <div>
                             <CourseHeadingComponent
                                 updateFormState = {this.updateFormState}
@@ -106,7 +106,7 @@ class CourseManagerContainer extends React.Component {
                         </div>
                     }/>
 
-                    <Route path="/grid" render={(props) =>
+                    <Route path="/courseList/grid" render={(props) =>
                         <div>
                             <CourseHeadingComponent
                                 updateFormState = {this.updateFormState}

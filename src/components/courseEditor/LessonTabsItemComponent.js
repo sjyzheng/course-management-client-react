@@ -41,8 +41,6 @@ class LessonTabsItemComponent extends React.Component {
     render() {
         return (
             <div className={`nav-item wbdv-lesson-item`} data-toggle="tooltip" data-placement="right" title={this.state.lessonTitle}>
-                {console.log(this.state.lessonId + " " + this.props.params.lessonId + " " + this.state.active)}
-
 
                 {!this.state.editing &&
                     <div className={`nav-link mx-1 ${(this.state.lessonId === this.props.params.lessonId || this.state.active)?'active':''}`} >

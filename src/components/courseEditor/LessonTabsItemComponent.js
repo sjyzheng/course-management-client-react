@@ -41,6 +41,9 @@ class LessonTabsItemComponent extends React.Component {
     render() {
         return (
             <div className={`nav-item wbdv-lesson-item`} data-toggle="tooltip" data-placement="right" title={this.state.lessonTitle}>
+                {console.log(this.state.lessonId + " " + this.props.params.lessonId + " " + this.state.active)}
+
+
                 {!this.state.editing &&
                     <div className={`nav-link mx-1 ${(this.state.lessonId === this.props.params.lessonId || this.state.active)?'active':''}`} >
                         <Link to={{
@@ -60,7 +63,7 @@ class LessonTabsItemComponent extends React.Component {
 
 
                 {this.state.editing &&
-                    <div className={`nav-link mx-1 form-inline ${(this.state.lessonId === this.props.params.lessonId || this.state.active)?'active':''}`}>
+                    <div className="nav-link form-inline mx-1 active">
                         <input className="wbdv-lesson-editFld form-control mr-1"
                                type="search"
                                value={this.state.lessonTitle}

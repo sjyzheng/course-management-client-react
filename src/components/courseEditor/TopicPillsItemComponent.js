@@ -41,13 +41,14 @@ class TopicPillsItemComponent extends React.Component {
     render() {
         return (
             <div className={`nav-item`} data-toggle="tooltip" data-placement="right" title={this.state.topicTitle}>
+
                 {!this.state.editing &&
-                <div className={`nav-link mx-1 ${(this.state.topicId === this.props.params.topicId || this.state.active)?'active': 'bg-light'}`}>
+                <div className={`nav-link mx-1 ${((this.state.topicId.toString()) === this.props.params.topicId || this.state.active)?'active': 'bg-light'}`}>
                     <Link to={{
                         pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topicId}`,
                         state: {courseTitle: this.props.courseTitle,
                             layout: this.props.layout}}}
-                          className="text-truncate wbdv-topic-item-title text-dark"
+                          className={`text-truncate wbdv-topic-item-title ${((this.state.topicId.toString()) === this.props.params.topicId || this.state.active)?'text-white': 'text-dark'}`}
                           key={this.state.topicId}>
                         {this.state.topicTitle}
                     </Link>
@@ -59,7 +60,7 @@ class TopicPillsItemComponent extends React.Component {
                 }
 
                 {this.state.editing &&
-                    <div className={`nav-link form-inline mx-1 ${(this.state.topicId === this.props.params.topicId || this.state.active)?'active':''}`}>
+                    <div className="nav-link form-inline mx-1 active">
                         <input className="wbdv-topic-editFld form-control mr-1"
                                type="search"
                                value={this.state.topicTitle}

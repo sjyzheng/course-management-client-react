@@ -91,7 +91,10 @@ class CourseManagerContainer extends React.Component {
         return (
             <div className="container-fluid p-0">
                 <Router>
-                    <Redirect from="/" to="/courseList/table"/>
+                    <Route exact={true} path="/">
+                        <Redirect to="/courseList/table"/>
+                    </Route>
+
                     <Route path="/courseList/table" render={(props) =>
                         <div>
                             <CourseHeadingComponent

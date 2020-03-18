@@ -27,7 +27,7 @@ class CourseManagerContainer extends React.Component {
     }
 
     deleteCourse = (courseToDelete) => {
-        courseService.deleteCourse(courseToDelete._id)
+        courseService.deleteCourse(courseToDelete.id)
             .then(() => {
                 courseService.findAllCourses()
                     .then(courses => {
@@ -43,8 +43,9 @@ class CourseManagerContainer extends React.Component {
         this.state.newCourseTitle === ''? alert('Please Enter a Valid Course Title!'):
         courseService.createCourse({
             title: this.state.newCourseTitle,
-            dateModified: this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear()
-        }).then(() => {
+            dateCreated: this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear(),
+            dateModified : this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear()
+    }).then(() => {
             courseService.findAllCourses()
                 .then(courses => {
                     this.setState({
@@ -64,7 +65,7 @@ class CourseManagerContainer extends React.Component {
     editCourse = (course) => {
         this.setState(prevState => ({
                 courses: prevState.courses.map (crs => {
-                    crs.editing = course._id === crs._id;
+                    crs.editing = course.id === crs.id;
                     return crs
                 })
             })
@@ -74,7 +75,7 @@ class CourseManagerContainer extends React.Component {
     updateCourse = (course) => {
         this.date = new Date();
         course.dateModified =  this.date.getMonth()+1 + '/' + this.date.getDate() + '/' + this.date.getFullYear();
-        courseService.updateCourse(course._id, course)
+        courseService.updateCourse(course.id, course)
             .then(() => {
                 courseService.findAllCourses()
                     .then(courses => {

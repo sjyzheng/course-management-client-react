@@ -7,7 +7,7 @@ class ModuleListItemComponent extends React.Component {
         this.state = {
             active: false,
             editing: false,
-            moduleId: this.props.module._id,
+            moduleId: this.props.module.id,
             moduleTitle: this.props.module.title
         }
     }
@@ -28,7 +28,7 @@ class ModuleListItemComponent extends React.Component {
                 active: !prevState.active
             }));
             module.title=this.state.moduleTitle;
-            this.props.updateModule(module._id, module)
+            this.props.updateModule(module.id, module)
         }
     }
 

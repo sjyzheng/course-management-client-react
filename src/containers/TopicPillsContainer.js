@@ -6,6 +6,7 @@ import TopicPillsItemComponent from "../components/courseEditor/TopicPillsItemCo
 
 class TopicPillsContainer extends React.Component {
     componentDidMount() {
+        if (!this.props.lessonId) { return; }
         this.props.findTopicsForLesson(this.props.lessonId);
     }
 
@@ -18,7 +19,7 @@ class TopicPillsContainer extends React.Component {
     render() {
         return (
             <div className="nav nav-pills nav-fill my-2 text-nowrap wbdv-topic-pill-list">
-                {this.props.topics && this.props.topics.map(topic =>
+                {this.props.topics.length > 0 && this.props.lessonId && this.props.topics.map(topic =>
                     <TopicPillsItemComponent
                         topic = {topic}
                         key = {topic.id}

@@ -18,10 +18,10 @@ class ModuleListContainer extends React.Component {
     render() {
         return (
             <div className="list-group bg-dark min-vh-100 wbdv-module-list">
-                {this.props.modules && this.props.modules.map(module =>
+                {(this.props.modules.length > 0) && this.props.modules.map(module =>
                     <ModuleListItemComponent
                         module = {module}
-                        key = {module._id}
+                        key = {module.id}
                         courseId = {this.props.courseId}
                         courseTitle = {this.props.courseTitle}
                         layout = {this.props.layout}

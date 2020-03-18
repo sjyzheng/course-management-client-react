@@ -7,7 +7,7 @@ class LessonTabsItemComponent extends React.Component {
         this.state = {
             active: false,
             editing: false,
-            lessonId: this.props.lesson._id,
+            lessonId: this.props.lesson.id,
             lessonTitle: this.props.lesson.title
         }
     }
@@ -28,7 +28,7 @@ class LessonTabsItemComponent extends React.Component {
                 active: !prevState.active
             }));
             lesson.title=this.state.lessonTitle;
-            this.props.updateLesson(lesson._id, lesson)
+            this.props.updateLesson(lesson.id, lesson)
         }
     }
 

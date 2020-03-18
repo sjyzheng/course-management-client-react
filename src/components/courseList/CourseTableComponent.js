@@ -24,7 +24,7 @@ const CourseTableComponent = ({courses, deleteCourse, editCourse, updateCourse})
                         editCourse={editCourse}
                         deleteCourse={deleteCourse}
                         updateCourse={updateCourse}
-                        key={course._id}
+                        key={course.id}
                         course={course}/>
                 )
             }

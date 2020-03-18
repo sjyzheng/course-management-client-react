@@ -72,8 +72,6 @@ class TopicPillsItemComponent extends React.Component {
                         <i className="far fa-trash-alt mx-2"
                            onClick={() => {
                                this.props.deleteTopic(this.state.topicId);
-                               {console.log(this.state.topicId)}
-                               {console.log(this.props.params.topicId)}
                                if (this.state.topicId === Number(this.props.params.topicId)) {
                                    this.props.history.push({
                                        pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}`,

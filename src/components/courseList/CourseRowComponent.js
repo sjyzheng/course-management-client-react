@@ -53,7 +53,7 @@ class CourseRowComponent extends React.Component {
                         <div className="row list-group-itm">
                             <div className="col-8 col-md-6 col-lg-6">
                                 <Link to={{
-                                    pathname: `/courses/${this.state.course._id}`,
+                                    pathname: `/courses/${this.state.course.id}`,
                                     state: {courseTitle: this.state.courseName,
                                             layout: "table"}}}
                                       className="wbdv-course-title"

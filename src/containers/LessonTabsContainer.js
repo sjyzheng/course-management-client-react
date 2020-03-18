@@ -6,6 +6,7 @@ import LessonTabsItemComponent from "../components/courseEditor/LessonTabsItemCo
 
 class LessonTabsContainer extends React.Component {
     componentDidMount() {
+        if (!this.props.moduleId) { return; }
         this.props.findLessonsForModule(this.props.moduleId);
     }
 
@@ -18,10 +19,10 @@ class LessonTabsContainer extends React.Component {
     render() {
         return (
             <div className="nav nav-tabs nav-fill">
-                {this.props.lessons && this.props.lessons.map(lesson =>
+                {this.props.lessons.length > 0 && this.props.moduleId && this.props.lessons.map(lesson =>
                     <LessonTabsItemComponent
                         lesson = {lesson}
-                        key = {lesson._id}
+                        key = {lesson.id}
                         courseId = {this.props.courseId}
                         moduleId = {this.props.moduleId}
                         courseTitle = {this.props.courseTitle}

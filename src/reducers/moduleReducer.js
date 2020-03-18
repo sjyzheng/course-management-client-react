@@ -15,12 +15,12 @@ const moduleReducer = (state = {modules: []}, action) => {
             }
         case DELETE_MODULE:
             return {
-                modules: state.modules.filter(module => module._id !== action.moduleId)
+                modules: state.modules.filter(module => module.id !== action.moduleId)
             }
         case UPDATE_MODULE:
             return {
                 modules: state.modules.map(module =>
-                    module._id === action.moduleId? action.module : module
+                    module.id === action.moduleId? action.module : module
                 )
             }
         default:

@@ -40,7 +40,7 @@ class ModuleListItemComponent extends React.Component {
 
     render() {
         return (
-            <li className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-module-item ${(this.state.moduleId === this.props.params.moduleId || this.state.active)?'active':''}`}>
+            <li className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-module-item ${(this.state.moduleId.toString() === this.props.params.moduleId || this.state.active)?'active':''}`}>
                 {!this.state.editing &&
                     <div className="row" data-toggle="tooltip" data-placement="right" title={this.state.moduleTitle}>
                         <Link to={{

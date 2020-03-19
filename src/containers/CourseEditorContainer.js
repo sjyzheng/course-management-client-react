@@ -60,7 +60,6 @@ class CourseEditorContainer extends React.Component {
                                         history = {this.props.history}/>
 
                                 </div>
-
                                 <div>
                                     <TopicPillsContainer
                                         courseId = {this.props.match.params.courseId}

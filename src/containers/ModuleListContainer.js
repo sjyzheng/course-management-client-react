@@ -35,15 +35,14 @@ class ModuleListContainer extends React.Component {
                 <div className={`list-group-item border-0 mx-3 mt-3 rounded wbdv-add-module text-center text-white text-truncate`}
                      data-toggle="tooltip" data-placement="right" title="Add Module"
                      style={{backgroundColor : "#FFA000"}}
-                     onClick={
-                         () => this.props.createModule(this.props.courseId, {title: 'New Module'})
+                     onClick={() =>
+                         this.props.createModule(this.props.courseId, {title: 'New Module'})
                              .then(result=>
                                  this.props.history.push({
                                      pathname: `/courses/${this.props.courseId}/modules/${result.module.id}`,
                                      state: {courseTitle: this.props.courseTitle,
                                          layout: this.props.layout}})
-                             )
-                     }>
+                             )}>
                     Add Module
                 </div>
             </div>

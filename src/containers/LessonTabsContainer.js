@@ -38,9 +38,14 @@ class LessonTabsContainer extends React.Component {
                 <div className="nav-item">
                     {this.props.moduleId &&
                     <div className="nav-link"
-                         onClick={() => {
-                             this.props.createLesson(this.props.params.moduleId, {title: 'New Lesson'})
-                         }}>
+                         onClick={() =>
+                             this.props.createLesson(this.props.moduleId, {title: 'New Lesson'})
+                                 .then(result =>
+                                     this.props.history.push({
+                                         pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${result.lesson.id}`,
+                                         state: {courseTitle: this.props.courseTitle,
+                                             layout: this.props.layout}})
+                                 )}>
                         Add Lesson
                     </div>}
                 </div>
@@ -59,9 +64,8 @@ const stateToPropertyMapper = (state) => ({
 const dispatchToPropertyMapper = (dispatch) => ({
     createLesson: (moduleId, lesson) =>
         lessonService.createLesson(moduleId, lesson)
-            .then(actualLesson => {
-                dispatch(createLesson(actualLesson))}
-            ),
+            .then(actualLesson =>
+                dispatch(createLesson(actualLesson))),
     findLessonsForModule: (moduleId) =>
         lessonService.findLessonsForModule(moduleId)
             .then(lessons =>

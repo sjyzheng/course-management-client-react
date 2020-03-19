@@ -38,9 +38,14 @@ class TopicPillsContainer extends React.Component {
                 {this.props.lessonId &&
                 <div className={`nav-item`}>
                     <div className="nav-link bg-light mx-1 wbdv-topic-add-btn"
-                         onClick={()=>{
+                         onClick={()=>
                              this.props.createTopic(this.props.lessonId, {})
-                         }}>
+                                 .then(result =>
+                                     this.props.history.push({
+                                         pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${result.topic.id}`,
+                                         state: {courseTitle: this.props.courseTitle,
+                                             layout: this.props.layout}})
+                                 )}>
                         Add Topic
                     </div>
                 </div>}

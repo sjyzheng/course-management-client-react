@@ -43,7 +43,7 @@ class LessonTabsItemComponent extends React.Component {
             <div className={`nav-item wbdv-lesson-item`} data-toggle="tooltip" data-placement="right" title={this.state.lessonTitle}>
 
                 {!this.state.editing &&
-                    <div className={`nav-link mx-1 ${(this.state.lessonId === this.props.params.lessonId || this.state.active)?'active':''}`} >
+                    <div className={`nav-link mx-1 ${(this.state.lessonId.toString() === this.props.params.lessonId || this.state.active)?'active':''}`} >
                         <Link to={{
                             pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lessonId}`,
                             state: {courseTitle: this.props.courseTitle,

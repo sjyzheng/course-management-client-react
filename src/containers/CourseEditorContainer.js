@@ -71,7 +71,7 @@ class CourseEditorContainer extends React.Component {
                                         history = {this.props.history}/>
                                 </div>
                                 <div>
-                                    {this.props.match.params.topicId !== undefined &&
+                                    {this.props.match.params.topicId &&
                                     <WidgetListContainer
                                         courseId = {this.props.match.params.courseId}
                                         moduleId = {this.props.match.params.moduleId}

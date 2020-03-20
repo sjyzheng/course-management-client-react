@@ -15,6 +15,7 @@ class CourseManagerContainer extends React.Component {
     state = {
         newCourseTitle: '',
         courses: [],
+        order: 'aToZ'
     }
 
     componentDidMount() {
@@ -86,6 +87,24 @@ class CourseManagerContainer extends React.Component {
             })
     }
 
+    sortCourses = () => {
+        let sortedCourses = [...this.state.courses];
+        if (this.state.order === 'aToZ') {
+            sortedCourses.sort((a,b) => {
+                if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+                else return -1;
+            })
+            this.setState({courses: sortedCourses, order: 'zToA'})
+        }
+        else {
+            sortedCourses.sort((a,b) => {
+                if (a.title.toLowerCase() < b.title.toLowerCase()) return 1;
+                else return -1;
+            })
+            this.setState({courses: sortedCourses, order: 'aToZ'})
+        }
+    };
+
 
     render() {
         return (
@@ -103,9 +122,11 @@ class CourseManagerContainer extends React.Component {
                                 addCourse = {this.addCourse}/>
                             <CourseTableComponent
                                 {...props}
+                                order = {this.state.order}
                                 deleteCourse={this.deleteCourse}
                                 editCourse={this.editCourse}
                                 updateCourse={this.updateCourse}
+                                sortCourses={this.sortCourses}
                                 courses={this.state.courses}/>
                         </div>
                     }/>
@@ -118,10 +139,11 @@ class CourseManagerContainer extends React.Component {
                                 addCourse = {this.addCourse}/>
                             <CourseGridComponent
                                 {...props}
+                                order = {this.state.order}
                                 deleteCourse={this.deleteCourse}
                                 editCourse={this.editCourse}
                                 updateCourse={this.updateCourse}
-                                toggle={this.toggle}
+                                sortCourses={this.sortCourses}
                                 courses={this.state.courses}/>
                         </div>
                     }/>

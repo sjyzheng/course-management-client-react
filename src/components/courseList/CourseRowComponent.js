@@ -52,6 +52,7 @@ class CourseRowComponent extends React.Component {
                     {!this.state.active &&
                         <div className="row list-group-itm">
                             <div className="col-8 col-md-6 col-lg-6">
+                                <span className="fas fa-file-alt mx-2" style={{color: "dodgerblue"}}> </span>
                                 <Link to={{
                                     pathname: `/courses/${this.state.course.id}`,
                                     state: {courseTitle: this.state.courseName,
@@ -70,7 +71,10 @@ class CourseRowComponent extends React.Component {
 
                     {this.state.active && !this.state.editing &&
                         <div className="row list-group-itm">
-                            <div className="col-8 col-md-6 col-lg-6">{this.props.course.title}</div>
+                            <div className="col-8 col-md-6 col-lg-6">
+                                <span className="fas fa-file-alt mx-2" style={{color: "white"}}> </span>
+                                {this.props.course.title}
+                            </div>
                             <div className="col-md-4 col-lg-2 text-center d-none d-md-block wbdv-row wbdv-owner">me</div>
                             <div className="col-lg-2 text-center d-none d-lg-block wbdv-row wbdv-modified-date">{this.props.course.dateModified}</div>
                             <div className="col-4 col-md-2">

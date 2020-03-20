@@ -18,7 +18,7 @@ const CourseHeadingComponent = ({updateFormState, newCourseTitle, addCourse}) =>
                    value={newCourseTitle}/>
             <i className="fas fa-plus-circle fa-2x col-2 wbdv-button wbdv-add-course"
                onClick={addCourse}>
-            </i>0
+            </i>
         </nav>
     </div>
 )

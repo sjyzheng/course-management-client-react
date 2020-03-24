@@ -88,21 +88,29 @@ class CourseManagerContainer extends React.Component {
     }
 
     sortCourses = () => {
-        let sortedCourses = [...this.state.courses];
-        if (this.state.order === 'aToZ') {
-            sortedCourses.sort((a,b) => {
-                if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
-                else return -1;
-            })
-            this.setState({courses: sortedCourses, order: 'zToA'})
-        }
-        else {
-            sortedCourses.sort((a,b) => {
-                if (a.title.toLowerCase() < b.title.toLowerCase()) return 1;
-                else return -1;
-            })
-            this.setState({courses: sortedCourses, order: 'aToZ'})
-        }
+        this.setState(prev => {
+            let sortedCourses = [...prev.courses];
+            if (this.state.order === 'aToZ') {
+                sortedCourses.sort((a,b) => {
+                    if (a.title.toLowerCase() < b.title.toLowerCase()) return 1;
+                    else return -1;
+                })
+                return {
+                    courses: sortedCourses,
+                    order: 'zToA'
+                }
+            }
+            else {
+                sortedCourses.sort((a,b) => {
+                    if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+                    else return -1;
+                })
+                return {
+                    courses: sortedCourses,
+                    order: 'aToZ'
+                }
+            }
+        })
     };
 
 

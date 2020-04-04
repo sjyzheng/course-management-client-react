@@ -11,6 +11,7 @@ import LessonTabsContainer from "./LessonTabsContainer";
 import TopicPillsContainer from "./TopicPillsContainer";
 import WidgetListContainer from "./WidgetListContainer";
 import CourseEditorNavBarComponent from "../components/courseEditor/CourseEditorNavBarComponent";
+import CourseService from "../services/CourseService";
 
 const rootReducer = combineReducers({
     moduleReducer,
@@ -21,11 +22,34 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
+const courseService = new CourseService();
+
 class CourseEditorContainer extends React.Component {
     state = {
         courseTitle: this.props.location.state.courseTitle,
-        layout: this.props.location.state.layout
+        layout: this.props.location.state.layout,
+        course: { dateModified: "" }
     };
+
+    componentDidMount() {
+        courseService.findCourseById(this.props.match.params.courseId).then(course=>this.setState({course: course}))
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.course.dateModified !== this.state.course.dateModified) {
+            courseService.updateCourse(this.props.match.params.courseId, this.state.course);
+        }
+    }
+
+    updateCourse = () => {
+        let date = new Date();
+        this.setState( prev => ({
+            course: { ...prev.course,
+                    dateModified: date.getMonth()+1 + '/' + date.getDate() + '/' + date.getFullYear()
+            }
+        }));
+        console.log(this.state.course)
+    }
 
     render() {
         return (
@@ -45,6 +69,7 @@ class CourseEditorContainer extends React.Component {
                                     courseId = {this.props.match.params.courseId}
                                     courseTitle = {this.state.courseTitle}
                                     layout = {this.state.layout}
+                                    updateCourse = {this.updateCourse}
                                     params = {this.props.match.params}
                                     history = {this.props.history}/>
 
@@ -56,6 +81,7 @@ class CourseEditorContainer extends React.Component {
                                         moduleId = {this.props.match.params.moduleId}
                                         courseTitle = {this.state.courseTitle}
                                         layout = {this.state.layout}
+                                        updateCourse = {this.updateCourse}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>
 
@@ -67,6 +93,7 @@ class CourseEditorContainer extends React.Component {
                                         lessonId = {this.props.match.params.lessonId}
                                         courseTitle = {this.state.courseTitle}
                                         layout = {this.state.layout}
+                                        updateCourse = {this.updateCourse}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>
                                 </div>
@@ -79,6 +106,7 @@ class CourseEditorContainer extends React.Component {
                                         topicId = {this.props.match.params.topicId}
                                         courseTitle = {this.state.courseTitle}
                                         layout = {this.state.layout}
+                                        updateCourse = {this.updateCourse}
                                         params = {this.props.match.params}
                                         history = {this.props.history}/>}
                                 </div>

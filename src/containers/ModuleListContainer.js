@@ -42,7 +42,8 @@ class ModuleListContainer extends React.Component {
                                      pathname: `/courses/${this.props.courseId}/modules/${result.module.id}`,
                                      state: {courseTitle: this.props.courseTitle,
                                          layout: this.props.layout}})
-                             )}>
+                             ).then(state => this.props.updateCourse)
+                     }>
                     Add Module
                 </div>
             </div>

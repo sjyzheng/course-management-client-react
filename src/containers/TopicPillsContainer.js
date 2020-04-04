@@ -45,7 +45,7 @@ class TopicPillsContainer extends React.Component {
                                          pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${result.topic.id}`,
                                          state: {courseTitle: this.props.courseTitle,
                                              layout: this.props.layout}})
-                                 )}>
+                                 ).then(state => this.props.updateCourse)}>
                         Add Topic
                     </div>
                 </div>}

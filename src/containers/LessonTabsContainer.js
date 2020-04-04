@@ -45,7 +45,7 @@ class LessonTabsContainer extends React.Component {
                                          pathname: `/courses/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${result.lesson.id}`,
                                          state: {courseTitle: this.props.courseTitle,
                                              layout: this.props.layout}})
-                                 )}>
+                                 ).then(state => this.props.updateCourse)}>
                         Add Lesson
                     </div>}
                 </div>

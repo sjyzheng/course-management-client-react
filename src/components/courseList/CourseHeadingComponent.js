@@ -4,7 +4,7 @@ const CourseHeadingComponent = ({updateFormState, newCourseTitle, addCourse}) =>
     <div className="container-fluid p-0">
         <nav className="navbar navbar-light bg-light">
             <button className="navbar-toggler mr-2 wbdv-field wbdv-hamburger" type="button" data-toggle="collapse"
-                    data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false"
+                    aria-controls="navbarTogglerDemo" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"> </span>
             </button>
